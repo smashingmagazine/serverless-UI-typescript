@@ -20,10 +20,10 @@ const App: FC = () => {
     setNoteContent("");
   };
 
-  const delContent = (noteToDelete: number): void => {
+  const delContent = (noteID: number): void => {
     setNoteList(
       noteList.filter((content) => {
-        return content.id !== noteToDelete;
+        return content.id !== noteID;
       })
     );
   };
