@@ -1,6 +1,7 @@
 import { FC, ChangeEvent, useState } from "react";
 import "./App.css";
-import Note from "./Components/Note";
+import Note from "./Components/Note/Note";
+import Quote from "./Components/Quote";
 import { INote } from "./Interfaces";
 
 const App: FC = () => {
@@ -14,15 +15,15 @@ const App: FC = () => {
   };
 
   const addNote = (): void => {
-    const newContent = { note: noteContent };
+    const newContent: INote = { id: Date.now(), note: noteContent };
     setNoteList([...noteList, newContent]);
     setNoteContent("");
   };
 
-  const delContent = (noteToDelete: string): void => {
+  const delContent = (noteToDelete: number): void => {
     setNoteList(
       noteList.filter((content) => {
-        return content.note !== noteToDelete;
+        return content.id !== noteToDelete;
       })
     );
   };
@@ -42,9 +43,15 @@ const App: FC = () => {
         <button onClick={addNote}>Add Note</button>
       </div>
       <div className="noteList">
-        {noteList.map((content: INote, key: number) => {
-          return <Note key={key} content={content} delContent={delContent} />;
+        {noteList.map((content: INote) => {
+          return (
+            <Note key={content.id} content={content} delContent={delContent} />
+          );
         })}
+      </div>
+
+      <div className="randomJokes">
+        <Quote />
       </div>
     </div>
   );

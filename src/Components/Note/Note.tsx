@@ -1,4 +1,9 @@
-import { Props } from "../Interfaces";
+import { INote } from "../../Interfaces";
+
+interface Props {
+  content: INote;
+  delContent(noteToDelete: number): void;
+}
 
 const Note = ({ content, delContent }: Props) => {
   return (
@@ -8,7 +13,7 @@ const Note = ({ content, delContent }: Props) => {
       </div>
       <button
         onClick={() => {
-          delContent(content.note);
+          delContent(content.id);
         }}
       >
         X

@@ -1,8 +1,4 @@
 export interface INote {
+  id: number;
   note: string;
-}
-
-export interface Props {
-  content: INote;
-  delContent(noteToDelete: string): void;
 }
