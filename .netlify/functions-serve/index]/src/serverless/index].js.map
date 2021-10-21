@@ -1,0 +1,8 @@
+{
+  "version": 3,
+  "sources": ["../../home/ikehakinyemi/Projects/ReactJS/serverless-UI-typescript/serverless/index].ts"],
+  "sourceRoot": "/tmp/tmp-84352-R4F4jJZ27gue",
+  "sourcesContent": ["exports.handler = async (event, context) => {\n  const url = \"https://icanhazdadjoke.com/\";\n  try {\n    const jokeStream = await fetch(url, {\n      \"headers\": {\n        \"Accept\": \"application/json\",\n      },\n    });\n    const jsonJoke = await jokeStream.json();\n    console.log(jsonJoke);\n\n    return {\n      statusCode: 200,\n      body: JSON.stringify(jsonJoke),\n    };\n  } catch (err) {\n    return { statusCode: 422, body: err.stack };\n  }\n};\n"],
+  "mappings": ";AAAA,QAAQ,UAAU,OAAO,OAAO,YAAY;AAC1C,QAAM,MAAM;AACZ,MAAI;AACF,UAAM,aAAa,MAAM,MAAM,KAAK;AAAA,MAClC,WAAW;AAAA,QACT,UAAU;AAAA;AAAA;AAGd,UAAM,WAAW,MAAM,WAAW;AAClC,YAAQ,IAAI;AAEZ,WAAO;AAAA,MACL,YAAY;AAAA,MACZ,MAAM,KAAK,UAAU;AAAA;AAAA,WAEhB,KAAP;AACA,WAAO,EAAE,YAAY,KAAK,MAAM,IAAI;AAAA;AAAA;",
+  "names": []
+}

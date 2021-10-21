@@ -5,12 +5,12 @@ const Quote = () => {
   const [joke, setJoke] = useState<string>();
   useEffect(() => {
     const getRandomJoke = setInterval(async () => {
-      const url = "/.netlify/functions/jokes";
+      const url = "https://dwh6k64yrlqcn.cloudfront.net/api/jokes";
       const jokeStream = await fetch(url);
       const res = await jokeStream.json();
       const joke = res.joke;
       setJoke(joke);
-    }, 1000);
+    }, 2000);
 
     return () => {
       clearInterval(getRandomJoke);
