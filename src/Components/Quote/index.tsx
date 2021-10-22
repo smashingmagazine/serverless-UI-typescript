@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
-import { clearInterval } from "timers";
 
 const Quote = () => {
   const [joke, setJoke] = useState<string>();
   useEffect(() => {
-    const getRandomJoke = setInterval(async () => {
-      const url = "https://dwh6k64yrlqcn.cloudfront.net/api/jokes";
+    const getRandomJokeEveryTwoSeconds = setInterval(async () => {
+      const url = process.env.API_LINK || "https://dwh6k64yrlqcn.cloudfront.net/api/jokes";
       const jokeStream = await fetch(url);
       const res = await jokeStream.json();
       const joke = res.joke;
@@ -13,7 +12,7 @@ const Quote = () => {
     }, 2000);
 
     return () => {
-      clearInterval(getRandomJoke);
+      clearInterval(getRandomJokeEveryTwoSeconds);
     };
   }, []);
 
